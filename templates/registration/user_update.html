@@ -76,30 +76,30 @@
             </div>
         </div>
 
-        <div class="field">
-            <label for="cgpa" class="label">CGPA</label>
-            <div class="control has-icons-left">
-                <input
-                  class="input {% if 'cgpa' in form.errors %}is-danger{% endif %}"
-                  type="number"
-                  name="cgpa"
-                  placeholder="CGPA"
-                  required=""
-                  step=".01"
-                  value="{{ form.cgpa.value|default_if_none:'' }}"
-                  spellcheck="false">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-percent"></i>
-                </span>
-                {% if 'cgpa' in form.errors %}
-                <ul class="help is-danger">
-                    {% for error in form.errors|get_item:'cgpa' %}
-                    <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-        </div>
+{#        <div class="field">#}
+{#            <label for="cgpa" class="label">CGPA</label>#}
+{#            <div class="control has-icons-left">#}
+{#                <input#}
+{#                  class="input {% if 'cgpa' in form.errors %}is-danger{% endif %}"#}
+{#                  type="number"#}
+{#                  name="cgpa"#}
+{#                  placeholder="CGPA"#}
+{#                  required=""#}
+{#                  step=".01"#}
+{#                  value="{{ form.cgpa.value|default_if_none:'' }}"#}
+{#                  spellcheck="false">#}
+{#                <span class="icon is-small is-left">#}
+{#                    <i class="fas fa-percent"></i>#}
+{#                </span>#}
+{#                {% if 'cgpa' in form.errors %}#}
+{#                <ul class="help is-danger">#}
+{#                    {% for error in form.errors|get_item:'cgpa' %}#}
+{#                    <li>{{ error }}</li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#                {% endif %}#}
+{#            </div>#}
+{#        </div>#}
 
         <div class="field">
             <label for="phone_number" class="label">Phone Number</label>
@@ -256,7 +256,7 @@
             {% else %}
               class="file is-info"
             {% endif %}>
-            <label class="file-label">
+            <label class="file-label mr-2">
               <input class="file-input" type="file" accept=".pdf" name="cv_document">
               <span class="file-cta">
                 <span class="file-icon">
@@ -267,6 +267,9 @@
                 </span>
               </span>
             </label>
+          {% if user.cv_document %}
+                <a href="{{ user.cv_document.url }}" class="mt-2">Current CV document</a>
+            {% endif %}
           </div>
           <p class="help">PDF files are allowed.</p>
           {% if 'cv_document' in form.errors %}

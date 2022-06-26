@@ -2,14 +2,14 @@
 {% load my_tags %}
 
 {% block title %}
-    {{ block.super }} | Register
+    {{ block.super }} | Registration
 {% endblock title %}
 
 
 {% block content %}
 <div class="column is-4 is-offset-4">
     <div class="box">
-        <h3 class="title">Register</h3>
+        <h3 class="title">Registration</h3>
         {% if enable_registration %}
         <form method="post">
             {% csrf_token %}
@@ -116,29 +116,29 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="field">
-                <div class="control has-icons-left">
-                    <input
-                      class="input {% if 'cgpa' in form.errors %}is-danger{% endif %}"
-                      type="number"
-                      name="cgpa"
-                      placeholder="CGPA"
-                      required=""
-                      step=".01"
-                      value="{{ form.cgpa.value|default_if_none:'' }}"
-                      spellcheck="false">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-percent"></i>
-                    </span>
-                    {% if 'cgpa' in form.errors %}
-                    <ul class="help is-danger">
-                        {% for error in form.errors|get_item:'cgpa' %}
-                        <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </div>
-            </div>
+{#            <div class="field">#}
+{#                <div class="control has-icons-left">#}
+{#                    <input#}
+{#                      class="input {% if 'cgpa' in form.errors %}is-danger{% endif %}"#}
+{#                      type="number"#}
+{#                      name="cgpa"#}
+{#                      placeholder="CGPA"#}
+{#                      required=""#}
+{#                      step=".01"#}
+{#                      value="{{ form.cgpa.value|default_if_none:'' }}"#}
+{#                      spellcheck="false">#}
+{#                    <span class="icon is-small is-left">#}
+{#                        <i class="fas fa-percent"></i>#}
+{#                    </span>#}
+{#                    {% if 'cgpa' in form.errors %}#}
+{#                    <ul class="help is-danger">#}
+{#                        {% for error in form.errors|get_item:'cgpa' %}#}
+{#                        <li>{{ error }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                    {% endif %}#}
+{#                </div>#}
+{#            </div>#}
             <div class="field">
                 <div class="control has-icons-left">
                   <span class="select is-fullwidth{% if 'department' in form.errors %} is-danger{% endif %}">

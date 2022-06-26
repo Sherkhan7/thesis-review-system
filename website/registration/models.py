@@ -40,10 +40,10 @@ class WebsiteSettings(models.Model):
 
 
 class DepartmentType(models.TextChoices):
-    CSE = 'CSE'
-    EEE = 'EEE'
-    ETE = 'ETE'
-    PHM = 'PHM'
+    KIF = 'KIF'
+    DIF = 'DIF'
+    AX = 'AX'
+    TELEKOM = 'TELEKOM'
 
 
 class User(AbstractUser):
@@ -52,9 +52,9 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=16, blank=True)
 
     department = models.CharField(
-        max_length=3,
+        max_length=10,
         choices=DepartmentType.choices,
-        default=DepartmentType.CSE.value,
+        default=DepartmentType.KIF.value,
     )
 
     # Only for teachers

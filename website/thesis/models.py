@@ -113,7 +113,7 @@ class StudentGroup(models.Model):
     )
     title = models.CharField(max_length=256)
     department = models.CharField(
-        max_length=3,
+        max_length=10,
         choices=DepartmentType.choices,
     )
     md5hash = models.CharField(max_length=10, null=True)

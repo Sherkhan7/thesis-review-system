@@ -10,6 +10,14 @@
                         {{ d.time|date:"d M Y" }} - {{ d.time|date:"H:i" }}
                     </time>
                 </p>
+                {% if d.author %}
+                    <p class="is-size-7">
+                        <span class="icon"><i class="fas fa-user-circle"></i></span>
+                        <span>
+                            {{ d.author.full_name }}
+                        </span>
+                    </p>
+                {% endif %}
             </div>
             <div class="column has-text-right">
                 <a

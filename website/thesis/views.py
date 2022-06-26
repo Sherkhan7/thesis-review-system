@@ -153,6 +153,7 @@ class DocumentUploadView(
     def form_valid(self, form):
         self.object = document = form.save(commit=False)
         document.studentgroup = self.studentgroup
+        document.author = self.request.user
         document.save()
         messages.success(
             self.request,

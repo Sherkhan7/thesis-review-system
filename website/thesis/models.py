@@ -187,6 +187,11 @@ class Document(models.Model):
         StudentGroup,
         on_delete=models.CASCADE,
         related_name='documents')
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True
+    )
     upload_time = models.DateTimeField(auto_now_add=True)
     document_type = models.CharField(
         max_length=24,
@@ -215,6 +220,12 @@ class Logbook(models.Model):
         StudentGroup,
         on_delete=models.CASCADE,
         related_name='logbooks',
+    )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        related_name='log_books'
     )
     time = models.DateTimeField()
     meeting_type = models.CharField(

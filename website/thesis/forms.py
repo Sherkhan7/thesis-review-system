@@ -62,7 +62,7 @@ class StudentGroupForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        first_choice = cleaned_data['first_choice']
+        first_choice = cleaned_data.get('first_choice')
         second_choice = cleaned_data.get('second_choice')
         third_choice = cleaned_data.get('third_choice')
         if second_choice is None and third_choice is not None:

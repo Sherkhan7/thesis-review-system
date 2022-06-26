@@ -74,7 +74,7 @@ class GroupJoinView(LoginRequiredMixin, UserIsStudentMixin, FormView):
     def form_valid(self, form):
         md5hash = form.cleaned_data.get('md5hash')
         studentgroup = get_object_or_404(StudentGroup, md5hash=md5hash)
-        if studentgroup.status != 'Pending':
+        if studentgroup.status != 'Pending Admin Approval':
             messages.error(
                 self.request,
                 "The Group has already been approved by admin. You can not join this group.",

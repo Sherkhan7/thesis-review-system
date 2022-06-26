@@ -127,6 +127,22 @@
                               </span>
                           </span>
                           <br/>
+                        {% if user.is_student and studentgroup.status == 'Defense Done' %}
+                            <span class="group-details-text-container">
+                                <b>Your grade: </b>
+                                <span class="tag is-danger">
+                                    {{ user.result.grade }}
+                                </span>
+                            </span>
+                            <br />
+                            <span class="group-details-text-container">
+                                <b>Your total marks: </b>
+                                <span class="tag is-danger">
+                                    {{ user.result.total_marks }}
+                                </span>
+                            </span>
+                            <br />
+                        {% endif %}
                           {% if user.is_teacher %}
                             <span class="group-details-text-container">
                               <b>Grading Status:</b>

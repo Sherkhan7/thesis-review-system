@@ -2,7 +2,6 @@ from django.urls import path
 
 from . import views
 
-
 app_name = 'thesis'
 
 urlpatterns = [
@@ -34,11 +33,11 @@ urlpatterns = [
     path(
         'group/logbooks/create/',
         views.LogbookCreateView.as_view(),
-        name='logbook_upload',),
+        name='logbook_upload', ),
     path(
         'group/logbooks/<int:pk>/',
         views.LogbookDetailView.as_view(),
-        name='logbook_detail',),
+        name='logbook_detail', ),
     path(
         'group/invite/',
         views.GroupInviteView.as_view(),

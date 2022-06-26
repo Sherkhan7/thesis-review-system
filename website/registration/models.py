@@ -279,8 +279,7 @@ def update_result_on_mark_edit(sender, instance, **kwargs):
             _processed_mark=Case(
                 When(
                     graded_by=studentgroup.teacher,
-                    then=F(
-                        'mark') * (studentgroup.batch.supervisor_mark_percentage / 100)
+                    then=F('mark') * (studentgroup.batch.supervisor_mark_percentage / 100)
                 ),
                 When(
                     graded_by=studentgroup.internal,
@@ -298,6 +297,5 @@ def update_result_on_mark_edit(sender, instance, **kwargs):
         ).aggregate(
             total_marks=Sum('_processed_mark')
         )
-        print(result_marks)
         result.total_marks = result_marks['total_marks']
         result.save()

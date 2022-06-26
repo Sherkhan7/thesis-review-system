@@ -26,7 +26,7 @@ import csv
 
 from .forms import (
     CSVUploadForm, StudentSignUpForm, UserUpdateForm, TeacherUpdateForm)
-from .models import Result, User, WebsiteSettings
+from .models import Result, User, WebsiteSettings, DepartmentType
 from ..thesis.models import Batch
 from website.thesis.mixins import UserIsSuperuserMixin
 
@@ -130,10 +130,9 @@ class TeachersListView(LoginRequiredMixin, ListView):
         return queryset
 
     def get_context_data(self, *args, object_list=None, **kwargs):
-        context_data = super().get_context_data(
-            *args, object_list=object_list, **kwargs)
-        context_data['department_name'] = self.kwargs.get(
-            'department_name', '')
+        context_data = super().get_context_data(*args, object_list=object_list, **kwargs)
+        context_data['department_name'] = self.kwargs.get('department_name', '')
+        context_data['department_types'] = DepartmentType.choices
         return context_data
 
 
@@ -177,7 +176,7 @@ def change_password(request):
 class ReportPDFView(
     LoginRequiredMixin,
     WeasyTemplateResponseMixin,
-        ListView):
+    ListView):
     context_object_name = 'results'
     pdf_attachment = False
     template_name = 'registration/result-report-pdf.html'

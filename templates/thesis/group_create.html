@@ -106,7 +106,7 @@
           <div class="control has-icons-left">
               <input class="input {% if 'student_list' in form.errors %} is-danger{% endif %}"
                       type="text" name="student_list" id="title"
-                      placeholder="C123456, C987654" required
+                      placeholder="C123456, C987654"
                       value="{{ form.student_list.value|default_if_none:'' }}">
               <span class="icon is-small is-left">
                   <i class="fas fa-users"></i>

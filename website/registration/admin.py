@@ -96,7 +96,7 @@ class ResultAdmin(admin.ModelAdmin):
 
 
 class StudentAdmin(UserAdmin):
-    list_display = ('username', 'full_name', 'email', 'phone_number', 'cgpa',)
+    list_display = ('username', 'full_name', 'email', 'phone_number', 'studentgroup')
     list_filter = ('is_active', 'department', 'studentgroup__batch',)
     search_fields = ('username', 'full_name')
     change_list_template = 'admin/student_change_list.html'

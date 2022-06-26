@@ -53,7 +53,7 @@ class StudentGroupForm(forms.ModelForm):
             student = User.objects.filter(username=processed_student_id)
             student_group = StudentGroup.objects.filter(
                 student_list__contains=processed_student_id,
-            )
+            ).first()
             # if (student.exists() and student.first().studentgroup) or student_group:
             if student.exists() and student.first().studentgroup != student_group:
                 errors.append(f'{student_id} already has a group.')

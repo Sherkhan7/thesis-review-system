@@ -209,7 +209,6 @@ class LogbookAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if 'studentgroup' in self.initial:
-            print(self.initial)
             self.fields['students_present'].queryset = User.objects.filter(
                 studentgroup_id=self.initial['studentgroup'],
             )
@@ -224,14 +223,15 @@ class LogbookCreateForm(forms.ModelForm):
             'id',
             'studentgroup',
             'approved',
+            'author',
         ]
 
     def __init__(self, *args, studentgroup, **kwargs):
+        self.request = kwargs.pop("request", None)
         self.studentgroup = studentgroup
         super().__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'input'
-            print(dir(visible.field.widget))
             if getattr(visible.field.widget, 'allow_multiple_selected', None):
                 visible.field.widget.attrs['style'] = 'min-height: 75px;'
             if not getattr(visible.field.widget, 'input_type', None):
@@ -245,4 +245,5 @@ class LogbookCreateForm(forms.ModelForm):
         # student_id = self.cleaned_data.pop('students_present')
         # student = get_object_or_404(Student, pk=student_id)
         self.instance.studentgroup = self.studentgroup
+        self.instance.author = self.request.user
         return super().save(commit=commit)

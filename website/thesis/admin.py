@@ -31,8 +31,6 @@ class StudentGroupChangeList(ChangeList):
         existing_ordering = [
             order for order in queryset.query.order_by
         ]
-
-        print(existing_ordering)
         queryset = queryset.order_by()
         query_param = request.GET.get('cgpa')
         if query_param == 'Ascending':

@@ -174,6 +174,7 @@ class LogbookCreateView(
     def get_form(self, *args, **kwargs):
         return self.form_class(
             studentgroup=self.studentgroup,
+            request=self.request,
             **self.get_form_kwargs(),
         )
 

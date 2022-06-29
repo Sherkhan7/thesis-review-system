@@ -87,7 +87,7 @@ class StudentGroupForm(forms.ModelForm):
             'title',
             'field',
             'batch',
-            'student_list',
+            # 'student_list',
             'first_choice',
             'second_choice',
             'third_choice',
